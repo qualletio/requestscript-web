@@ -1,0 +1,57 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 11px 22px;
+  border: 0;
+  border-radius: 14px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.primary {
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow:
+    6px 6px 14px var(--accent-glow),
+    -6px -6px 14px var(--shadow-light);
+}
+
+.primary:hover {
+  background: var(--accent-hover);
+}
+
+.primary:active {
+  box-shadow:
+    inset 3px 3px 7px rgba(0, 0, 0, 0.25),
+    inset -3px -3px 7px rgba(255, 255, 255, 0.12);
+}
+
+.outline {
+  background: var(--bg);
+  color: var(--ink);
+  box-shadow: var(--raised-sm);
+}
+
+.outline:hover {
+  color: var(--accent-text);
+}
+
+.outline:active {
+  box-shadow: var(--inset-sm);
+}

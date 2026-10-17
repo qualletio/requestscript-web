@@ -1,0 +1,326 @@
+.playground {
+  --line: 22px;
+  --pad: 16px;
+  padding: 20px;
+  border-radius: 28px;
+  box-shadow: var(--raised-lg);
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  padding: 0 4px 20px;
+}
+
+.selectLabel {
+  display: inline-flex;
+}
+
+.select {
+  min-height: 38px;
+  padding: 6px 34px 6px 12px;
+  border: 0;
+  border-radius: 12px;
+  background-color: var(--bg);
+  box-shadow: var(--raised-sm);
+  color: var(--ink);
+  font: 500 14px var(--font-sans);
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position:
+    right 17px center,
+    right 12px center;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.run {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 6px 20px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--accent);
+  box-shadow:
+    4px 4px 10px var(--accent-glow),
+    -4px -4px 10px var(--shadow-light);
+  color: var(--on-accent);
+  font: 600 14px var(--font-sans);
+  cursor: pointer;
+}
+
+.run:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.run:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.hint {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.hint kbd {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 1px 6px;
+  border-radius: 6px;
+  box-shadow: var(--raised-sm);
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 24px;
+}
+
+.inputs {
+  display: grid;
+  align-content: start;
+  gap: 20px;
+  min-width: 0;
+}
+
+.params {
+  display: grid;
+  gap: 10px;
+}
+
+.params .paneLabel {
+  padding-left: 4px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+/* The inset shadow sits on an overlay so the sticky gutter can't paint over it. */
+.editorFrame {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.editorFrame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  box-shadow: var(--inset);
+  pointer-events: none;
+}
+
+.editorFrame:focus-within::after {
+  box-shadow:
+    var(--inset),
+    inset 0 0 0 2px var(--accent-soft);
+}
+
+.editor {
+  display: flex;
+  max-height: 560px;
+  overflow: auto;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  line-height: var(--line);
+  tab-size: 4;
+}
+
+.gutter {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  flex: none;
+  padding: var(--pad) 12px var(--pad) 16px;
+  min-height: calc(var(--min-lines) * var(--line) + 2 * var(--pad));
+  background: var(--bg);
+  color: var(--code-comment);
+  text-align: right;
+  user-select: none;
+  font-size: 12px;
+}
+
+.surface {
+  position: relative;
+  flex: 1 0 auto;
+}
+
+.highlight,
+.input {
+  margin: 0;
+  padding: var(--pad) var(--pad) var(--pad) 4px;
+  font: inherit;
+  line-height: inherit;
+  letter-spacing: normal;
+  white-space: pre;
+  tab-size: inherit;
+}
+
+.highlight {
+  min-height: calc(var(--min-lines) * var(--line) + 2 * var(--pad));
+  color: var(--code-fg);
+  pointer-events: none;
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+  background: transparent;
+  color: transparent;
+  caret-color: var(--code-fg);
+}
+
+.input::selection {
+  background: var(--accent-glow);
+  color: transparent;
+}
+
+.output {
+  display: grid;
+  align-content: start;
+  gap: 20px;
+  min-width: 0;
+  padding: 22px;
+  border-radius: var(--radius);
+  box-shadow: var(--raised-sm);
+}
+
+.paneLabel {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.subLabel {
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px 16px;
+  margin: 0;
+  font-size: 14px;
+}
+
+.facts dt {
+  color: var(--muted);
+}
+
+.facts dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.facts code {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  font-size: 13px;
+}
+
+.response {
+  min-width: 0;
+}
+
+.responseBody {
+  margin: 0;
+  min-height: 150px;
+  max-height: 320px;
+  overflow: auto;
+  padding: 14px 16px;
+  border-radius: 12px;
+  box-shadow: var(--inset);
+  color: var(--code-fg);
+  font: 13px/1.65 var(--font-mono);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.responseBody .muted {
+  color: var(--code-muted);
+}
+
+.resources ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.resources code {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  font-size: 12.5px;
+  overflow-wrap: anywhere;
+}
+
+.ok,
+.fail {
+  display: inline-block;
+  padding: 0 10px;
+  border-radius: 999px;
+  box-shadow: var(--inset-sm);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.ok {
+  color: var(--success);
+}
+
+.fail {
+  color: var(--error);
+}
+
+.muted {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+
+  .hint {
+    display: none;
+  }
+}

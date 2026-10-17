@@ -1,0 +1,202 @@
+/*
+ * Neumorphic theme: every surface shares the base colour and is shaped by
+ * paired highlight/shadow drops — raised for things you can press or read,
+ * inset for wells, inputs and pressed states.
+ */
+:root {
+  --bg: #e8e3eb;
+  --ink: #2a2430;
+  --muted: #5f5867;
+  --accent: #8b3f7f;
+  --accent-hover: #74326a;
+  --accent-text: #7c3571;
+  --accent-soft: rgba(139, 63, 127, 0.12);
+  --on-accent: #ffffff;
+  --success: #1d7a45;
+  --error: #b3261e;
+
+  --shadow-dark: rgba(150, 136, 160, 0.55);
+  --shadow-light: rgba(255, 255, 255, 0.9);
+  --accent-glow: rgba(139, 63, 127, 0.35);
+
+  --raised: 8px 8px 18px var(--shadow-dark), -8px -8px 18px var(--shadow-light);
+  --raised-lg: 14px 14px 32px var(--shadow-dark), -14px -14px 32px var(--shadow-light);
+  --raised-sm: 4px 4px 9px var(--shadow-dark), -4px -4px 9px var(--shadow-light);
+  --inset: inset 6px 6px 12px var(--shadow-dark), inset -6px -6px 12px var(--shadow-light);
+  --inset-sm: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+  --groove: 0 1px 0 var(--shadow-light), 0 -1px 0 var(--shadow-dark);
+
+  --code-fg: #2a2430;
+  --code-muted: #6b6474;
+  --code-keyword: #9c2f7a;
+  --code-type: #136b75;
+  --code-string: #3f6f0e;
+  --code-number: #9a5200;
+  --code-comment: #857d8e;
+  --code-punct: #6b6474;
+  --code-property: #5b3fa6;
+
+  --font-sans: var(--font-plex-sans), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --content-width: 1200px;
+  --gutter: 32px;
+  --radius: 16px;
+  --radius-lg: 24px;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #27232c;
+    --ink: #efe9f1;
+    --muted: #b1a8b8;
+    --accent: #c88bbd;
+    --accent-hover: #d9a5cf;
+    --accent-text: #dba3d0;
+    --accent-soft: rgba(200, 139, 189, 0.14);
+    --on-accent: #241c25;
+    --success: #6ee7a0;
+    --error: #ff9a92;
+
+    --shadow-dark: rgba(10, 8, 12, 0.6);
+    --shadow-light: rgba(70, 62, 78, 0.45);
+    --accent-glow: rgba(200, 139, 189, 0.25);
+
+    --code-fg: #efe9f1;
+    --code-muted: #a59cad;
+    --code-keyword: #f0a6e0;
+    --code-type: #7fdde8;
+    --code-string: #b9e38a;
+    --code-number: #f5c97a;
+    --code-comment: #8a8194;
+    --code-punct: #b1a8b8;
+    --code-property: #c6b4ff;
+
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #27232c;
+  --ink: #efe9f1;
+  --muted: #b1a8b8;
+  --accent: #c88bbd;
+  --accent-hover: #d9a5cf;
+  --accent-text: #dba3d0;
+  --accent-soft: rgba(200, 139, 189, 0.14);
+  --on-accent: #241c25;
+  --success: #6ee7a0;
+  --error: #ff9a92;
+
+  --shadow-dark: rgba(10, 8, 12, 0.6);
+  --shadow-light: rgba(70, 62, 78, 0.45);
+  --accent-glow: rgba(200, 139, 189, 0.25);
+
+  --code-fg: #efe9f1;
+  --code-muted: #a59cad;
+  --code-keyword: #f0a6e0;
+  --code-type: #7fdde8;
+  --code-string: #b9e38a;
+  --code-number: #f5c97a;
+  --code-comment: #8a8194;
+  --code-punct: #b1a8b8;
+  --code-property: #c6b4ff;
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: var(--bg);
+  box-shadow: var(--inset-sm);
+  border-radius: 6px;
+  padding: 0.1em 0.45em;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 100;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: var(--bg);
+  box-shadow: var(--raised-sm);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+@media (max-width: 720px) {
+  :root {
+    --gutter: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
