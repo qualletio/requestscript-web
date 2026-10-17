@@ -1,13 +1,15 @@
 import type { Metadata } from 'next';
 import { ButtonLink, ButtonRow } from '@/components/ButtonLink';
 import { PageHero } from '@/components/PageHero';
-import { LANGUAGE_VERSION, links } from '@/lib/site';
+import { LANGUAGE_VERSION, links, pageMetadata } from '@/lib/site';
 import styles from '../content.module.css';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'About',
-  description: 'About the RequestScript programming language and its reference implementation.',
-};
+  description:
+    'About RequestScript, a small, strictly typed scripting language you send to a server to run, and requestscript-js, its open-source TypeScript reference implementation.',
+  path: '/about',
+});
 
 const facts = [
   { label: 'Latest release', value: `v${LANGUAGE_VERSION}`, href: links.npm },

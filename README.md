@@ -17,11 +17,17 @@ pnpm typecheck
 pnpm build
 ```
 
+## Deploying
+
+Set `NEXT_PUBLIC_SITE_URL` to the production origin (e.g. `https://example.com`). It is used for canonical
+URLs, Open Graph tags, `sitemap.xml`, `robots.txt` and structured data. On Vercel it falls back to the
+project's production domain.
+
 ## Layout
 
 - `src/app/` — routes: home (`page.tsx`), `use-cases/`, `about/`, `contribute/`, plus `not-found.tsx`
 - `src/components/` — header, footer, hero, sections, code blocks and the playground
-- `src/lib/site.ts` — external links and navigation
+- `src/lib/site.ts` — external links, navigation and SEO metadata (site URL, descriptions, `pageMetadata`)
 - `src/lib/playground.ts` — playground examples, demo resources and the runner
 - `src/lib/highlight.ts` — the small syntax highlighter used for code samples
 

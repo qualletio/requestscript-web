@@ -3,6 +3,7 @@ import { IBM_Plex_Mono, IBM_Plex_Sans } from 'next/font/google';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { themeInitScript } from '@/components/ThemeToggle';
+import { keywords, links, siteDescription, siteName, siteUrl } from '@/lib/site';
 import './globals.css';
 
 const plexSans = IBM_Plex_Sans({
@@ -18,13 +19,39 @@ const plexMono = IBM_Plex_Mono({
   display: 'swap',
 });
 
+const defaultTitle = 'RequestScript: send a script, get JSON back';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: 'RequestScript: send a script, get JSON back',
-    template: '%s | RequestScript',
+    default: defaultTitle,
+    template: `%s | ${siteName}`,
   },
-  description:
-    'RequestScript is a small, strictly typed scripting language that you send to a server to run. Its syntax is inspired by TypeScript and Kotlin.',
+  description: siteDescription,
+  applicationName: siteName,
+  keywords,
+  authors: [{ name: 'The RequestScript contributors', url: links.repository }],
+  creator: 'The RequestScript contributors',
+  category: 'technology',
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    siteName,
+    locale: 'en_US',
+    url: '/',
+    title: defaultTitle,
+    description: siteDescription,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: defaultTitle,
+    description: siteDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
+  },
 };
 
 export const viewport: Viewport = {

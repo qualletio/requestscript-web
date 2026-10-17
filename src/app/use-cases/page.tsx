@@ -3,13 +3,15 @@ import Link from 'next/link';
 import { ButtonLink } from '@/components/ButtonLink';
 import { CodeBlock } from '@/components/CodeBlock';
 import { PageHero } from '@/components/PageHero';
-import { links } from '@/lib/site';
+import { links, pageMetadata } from '@/lib/site';
 import styles from '../content.module.css';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Use cases',
-  description: 'What you can build with RequestScript: composable APIs, versioned business rules, safe integrations and more.',
-};
+  description:
+    'What you can build with RequestScript: composable APIs, versioned business rules, safe integrations and more.',
+  path: '/use-cases',
+});
 
 const useCases = [
   {

@@ -1,9 +1,10 @@
 import { ButtonLink, ButtonRow } from '@/components/ButtonLink';
 import { CodeBlock } from '@/components/CodeBlock';
 import { CopyButton } from '@/components/CopyButton';
+import { JsonLd } from '@/components/JsonLd';
 import { Playground } from '@/components/Playground';
 import { Section } from '@/components/Section';
-import { LANGUAGE_VERSION, links } from '@/lib/site';
+import { LANGUAGE_VERSION, links, siteDescription, siteName, siteUrl } from '@/lib/site';
 import styles from './page.module.css';
 
 const principles = [
@@ -88,9 +89,43 @@ await startServer({
 
 const install = 'pnpm add requestscript';
 
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: siteUrl,
+      name: siteName,
+      description: siteDescription,
+      inLanguage: 'en',
+    },
+    {
+      '@type': 'ComputerLanguage',
+      '@id': `${siteUrl}/#language`,
+      name: siteName,
+      url: siteUrl,
+      description: siteDescription,
+      sameAs: [links.repository, links.npm, links.docs],
+    },
+    {
+      '@type': 'SoftwareSourceCode',
+      name: 'requestscript-js',
+      description: 'The reference implementation of RequestScript, written in TypeScript.',
+      codeRepository: links.repository,
+      programmingLanguage: 'TypeScript',
+      runtimePlatform: 'Node.js',
+      license: 'https://www.apache.org/licenses/LICENSE-2.0',
+      version: LANGUAGE_VERSION,
+      about: { '@id': `${siteUrl}/#language` },
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <>
+      <JsonLd data={structuredData} />
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <div className={styles.heroCopy}>

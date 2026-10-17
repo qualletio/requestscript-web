@@ -3,13 +3,15 @@ import { ButtonLink, ButtonRow } from '@/components/ButtonLink';
 import { CodeBlock } from '@/components/CodeBlock';
 import { PageHero } from '@/components/PageHero';
 import { Section } from '@/components/Section';
-import { links } from '@/lib/site';
+import { links, pageMetadata } from '@/lib/site';
 import styles from '../content.module.css';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Contribute',
-  description: 'Ways to contribute to RequestScript: report issues, fix bugs, improve the docs and help design the language.',
-};
+  description:
+    'Ways to contribute to RequestScript: report issues, fix bugs, improve the docs and help design the language.',
+  path: '/contribute',
+});
 
 const ways = [
   {
