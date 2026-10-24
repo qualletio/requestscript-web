@@ -35,13 +35,13 @@ export const keywords = [
 ];
 
 export const links = {
-  docs: 'https://requestscript.mintlify.app',
-  quickstart: 'https://requestscript.mintlify.app/quickstart',
-  language: 'https://requestscript.mintlify.app/language/syntax',
-  resources: 'https://requestscript.mintlify.app/resources/overview',
-  contracts: 'https://requestscript.mintlify.app/contracts/overview',
-  versioning: 'https://requestscript.mintlify.app/contracts/versioning',
-  httpApi: 'https://requestscript.mintlify.app/reference/http-api',
+  docs: 'https://docs.requestscript.org',
+  quickstart: 'https://docs.requestscript.org/quickstart',
+  language: 'https://docs.requestscript.org/language/syntax',
+  resources: 'https://docs.requestscript.org/resources/overview',
+  contracts: 'https://docs.requestscript.org/contracts/overview',
+  versioning: 'https://docs.requestscript.org/contracts/versioning',
+  httpApi: 'https://docs.requestscript.org/reference/http-api',
   repository: 'https://github.com/qualletio/requestscript-js',
   issues: 'https://github.com/qualletio/requestscript-js/issues',
   pulls: 'https://github.com/qualletio/requestscript-js/pulls',
